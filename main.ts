@@ -13,17 +13,16 @@ let parser: AlfParser = new AlfParser(tokenStream);
 // Parse the input, where `prog` is whatever entry point you defined
 let tree:ProgContext = parser.prog();
 type Dicitionary={
-    tokens:String[];
+    tokens:String[]
 }
 let file_content:string;
 try {
     file_content = fs.readFileSync('Alf.tokens', 'ascii');
-    let tks:Dicitionary;
+
     let ln=file_content.split('\r\n');
     for(let i in ln)
     {
         let ln2=ln[i].split('=');
-        tks.tokens.push(ln2);
         console.log(ln2);
     }
     console.log(file_content);

@@ -38,7 +38,7 @@ let tree = parser.prog();
 let file_content;
 try {
     file_content = fs.readFileSync('Alf.tokens', 'ascii');
-    let ln = file_content.split('\n');
+    let ln = file_content.split('\r\n');
     for (let i in ln) {
         let ln2 = ln[i].split('=');
         console.log(ln2);
