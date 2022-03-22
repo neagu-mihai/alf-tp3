@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "antlr4ts": "antlr4ts -visitor path/to/Alf.g4"
+    "antlr4ts": "antlr4ts -visitor ./Alf.g4"
   },
   "repository": {
     "type": "git",
