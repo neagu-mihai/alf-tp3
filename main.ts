@@ -2,6 +2,7 @@ import {  CharStreams, CodePointCharStream, CommonTokenStream } from 'antlr4ts';
 import { AlfLexer } from './AlfLexer';
 import { AlfParser, ProgContext } from './AlfParser';
 import * as fs from 'fs';
+import { LexerATNSimulator } from 'antlr4ts/atn/LexerATNSimulator';
  
 // Create the lexer and parser
 let input: string = "10\n20";
@@ -42,4 +43,22 @@ try {
     console.log(file_content);
 } catch(error) {
     console.log(error);
+
 }
+console.log(lexer.getTokenType("Bonjour"));
+try {
+    file_content = fs.readFileSync('text_and_numbers.txt', 'ascii');
+    let ln=file_content.split('\r\n');
+    for (let i in ln)
+    {
+        lexer.text=ln[i];
+    
+           lexer.getTokenType(lexer.text);
+           lexer.getAllTokens();
+    }
+    console.log(file_content);
+} catch(error) {
+    console.log(error);
+    
+}
+

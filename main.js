@@ -65,3 +65,17 @@ try {
 catch (error) {
     console.log(error);
 }
+console.log(lexer.getTokenType("Bonjour"));
+try {
+    file_content = fs.readFileSync('text_and_numbers.txt', 'ascii');
+    let ln = file_content.split('\r\n');
+    for (let i in ln) {
+        lexer.text = ln[i];
+        lexer.getTokenType(lexer.text);
+        lexer.getAllTokens();
+    }
+    console.log(file_content);
+}
+catch (error) {
+    console.log(error);
+}
