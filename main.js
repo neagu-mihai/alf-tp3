@@ -35,14 +35,31 @@ let tokenStream = new antlr4ts_1.CommonTokenStream(lexer);
 let parser = new AlfParser_1.AlfParser(tokenStream);
 // Parse the input, where `prog` is whatever entry point you defined
 let tree = parser.prog();
+function toString(dictionary) {
+    let output = "";
+    for (let i in dictionary.token) {
+        output.concat(dictionary.value[i], ":", dictionary.token[i], ",");
+    }
+    return output;
+}
 let file_content;
 try {
     file_content = fs.readFileSync('Alf.tokens', 'ascii');
+    let d = { value: [], token: [] };
     let ln = file_content.split('\r\n');
     for (let i in ln) {
         let ln2 = ln[i].split('=');
-        console.log(ln2);
+        for (let j in ln2) {
+            if (+j % 2 == 0) {
+                d.token.push(ln2[j]);
+            }
+            else {
+                d.value.push(ln2[j]);
+            }
+            ;
+        }
     }
+    console.log(toString(d));
     console.log(file_content);
 }
 catch (error) {
